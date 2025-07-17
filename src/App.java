@@ -1,5 +1,7 @@
 import java.util.List;
+import java.util.Map;
 
+import controllers.LibroController;
 import models.Book;
 
 public class App {
@@ -30,6 +32,16 @@ public class App {
                 new Book("Java Avanzado", "Luis Pérez", 2019), // Duplicado
                 new Book("Ciberseguridad", "Pedro León", 2023),
                 new Book("Blockchain", "Marta Ríos", 2021),
-                new Book("Machine Learning", "Cristina Gómez", 2022));
+                new Book("Machine Learning", "Cristina Gómez", 2022)
+        );
+        LibroController controller = new LibroController();
+        Map<Book, Book> resultado = controller.procesarLibros(libros);
+
+        System.out.println("=== Libros procesados (ordenados) ===");
+        resultado.forEach((k, v) -> System.out.println(v));
+
+        System.out.println("\nTotal de libros creados: " + Book.getContador());
+        System.out.println("Total de libros únicos procesados: " + resultado.size());
     }
+   
 }
